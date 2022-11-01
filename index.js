@@ -1,8 +1,9 @@
 const app = require("express")();
+// const server = require("http").Server(app);
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer, {
   cors: {
-    origin: "https://main.d2avmmnv8axc1e.amplifyapp.com/",
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
@@ -28,6 +29,6 @@ function chatNotications(data) {
   io.emit("notification", data);
 }
 
-// httpServer.listen(4000);
-io.listen(process.env.PORT || 8000);
+httpServer.listen(8000);
+// io.listen(process.env.PORT || 8000);
 // WARNING !!! app.listen(3000); will not work here, as it creates a new HTTP server
