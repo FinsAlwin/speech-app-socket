@@ -28,5 +28,6 @@ function chatNotications(data) {
   io.emit("notification", data);
 }
 
-httpServer.listen(4000);
+// httpServer.listen(4000);
+io.listen(process.env.PORT || 8000);
 // WARNING !!! app.listen(3000); will not work here, as it creates a new HTTP server
